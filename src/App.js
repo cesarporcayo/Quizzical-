@@ -1,25 +1,23 @@
 import logo from './logo.svg';
 import './App.css';
+import React, {useState} from "react"
+import Landing from "./Pages/Landing"
+import Quiz from "./Pages/Quiz"
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const [page, setPage] = useState("LANDING")
+    const [settings, setSettings] = useState({difficulty:"easy", numOfQuestions:5})
+   
+    switch (page) {
+        case "LANDING":
+            return <Landing setPage={setPage}
+            setSettings={setSettings}
+            settings={settings}/>
+        case "QUIZ":
+            return <Quiz 
+            setPage={setPage}
+            settings={settings}/>
+    }
 }
 
 export default App;
